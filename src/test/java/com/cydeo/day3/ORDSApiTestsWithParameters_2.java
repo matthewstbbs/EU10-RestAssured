@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
-public class ORDSApiTestsWithParameters {
+public class ORDSApiTestsWithParameters_2 {
 
     @BeforeAll
     public static void init(){
@@ -17,6 +17,8 @@ public class ORDSApiTestsWithParameters {
         baseURI = "http://3.216.30.92:1000/ords/hr";
     }
 
+
+    //                  *******     dokümanı olmayan ORD'de query param ile sorgulama *****************
     /*
         Given accept type is Json
         And parameters: q = {"region_id":2}

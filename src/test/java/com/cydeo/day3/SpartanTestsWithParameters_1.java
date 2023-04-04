@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanTestsWithParameters {
+public class SpartanTestsWithParameters_1 {
 
     @BeforeAll
     public static void init(){
@@ -21,6 +21,8 @@ public class SpartanTestsWithParameters {
         baseURI = "http://3.216.30.92:8000";
     }
 
+
+    //                  ********           search with " Path " Params     ******************
      /*   Given accept type is Json
           And Id parameter value is 5
           When user sends GET request to /api/spartans/{id}
@@ -37,18 +39,23 @@ public class SpartanTestsWithParameters {
                                       accept(ContentType.JSON)
                                       .and().pathParam("id", 5)
                             .when()
-                                     .get("/api/spartans/{id}");
+                                     .get("/api/spartans/{id}");   // *** parametre {} içerisinde verilir.
         //verify status code
         assertEquals(200,response.statusCode());
         //verify content type
         assertEquals("application/json",response.contentType());
         //verify Blythe in the json payload/body
-        assertTrue(response.body().asString().contains("Blythe"));
+        assertTrue(response.body().asString().contains("Blythe"));  // yazdırarak sonuç görmüyorsak her zaman yanlış bir değer girerek testin çalıştığından emin ol. mesela bir"e" daha ekledik, soınucun fail olduğunu gördük.
 
 
 
     }
 
+
+
+
+
+    //                  ********              Negative Test"     ******************
        /*
         TASK
         Given accept type is Json
@@ -77,6 +84,8 @@ public class SpartanTestsWithParameters {
 
     }
 
+
+    //                  ********           search with " Query " Params     ******************
      /*
         Given accept type is Json
         And query parameter values are:
@@ -97,24 +106,27 @@ public class SpartanTestsWithParameters {
                               .and().queryParam("nameContains","e")
                               .and().queryParam("gender","Female")
                 .when()
-                        .get("/api/spartans/search");
+                        .get("/api/spartans/search");     //log().all(). ile "request"  şartlarının detaylarını görebilirsin.(display maksatlı)
 
         //verify status code 200
         assertEquals(200,response.statusCode());
         //verify content type
         assertEquals("application/json",response.contentType());
-        //verify NotFound in the json payload/body
 
-        //"Female" should be in response payload
+        //verify
+            //"Female" should be in response payload
         assertTrue(response.body().asString().contains("Female"));
-        //"Janette" should be in response payload
+             //"Janette" should be in response payload
         assertTrue(response.body().asString().contains("Janette"));
 
     }
+
+
+    //                  ********           yukarının aynısı ama MAP olarak verilen query parametreler     ******************
     @DisplayName("GET request to /api/spartans/search with Query Params (MAP)")
     @Test
     public void test4(){
-        //create a map and add query parameters
+        //create a map and add query parameters  aşağıdaki 3 satır Java bilgisi. API değil.
         Map<String,Object> queryMap = new HashMap<>();
         queryMap.put("nameContains","e");
         queryMap.put("gender","Female");
@@ -130,11 +142,11 @@ public class SpartanTestsWithParameters {
         assertEquals(200,response.statusCode());
         //verify content type
         assertEquals("application/json",response.contentType());
-        //verify NotFound in the json payload/body
-
-        //"Female" should be in response payload
+        
+        //verify
+            //"Female" should be in response payload
         assertTrue(response.body().asString().contains("Female"));
-        //"Janette" should be in response payload
+            //"Janette" should be in response payload
         assertTrue(response.body().asString().contains("Janette"));
 
     }

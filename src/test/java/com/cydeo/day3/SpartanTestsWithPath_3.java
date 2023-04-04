@@ -64,6 +64,8 @@ public class SpartanTestsWithPath_3 extends SpartanTestBase {
 
     }
 
+
+    //                                                        ***  navigate with Path()          ******************
     @DisplayName("GET all spartan and navigate with Path()")
     @Test
     public void test2(){
@@ -72,13 +74,13 @@ public class SpartanTestsWithPath_3 extends SpartanTestBase {
 
         //response.prettyPrint();
 
-        int firstId = response.path("id[0]");
+        int firstId = response.path("id[0]");   // index numbers
         System.out.println("firstId = " + firstId);
 
-        String name = response.path("name[0]");
+        String name = response.path("name[0]");  // index number
         System.out.println("name = " + name);
 
-        String lastFirstName = response.path("name[-1]");
+        String lastFirstName = response.path("name[-1]");    // index number'ın sondan başlamasına örnek
         System.out.println("lastFirstName = " + lastFirstName);
 
         //save names inside the list of string

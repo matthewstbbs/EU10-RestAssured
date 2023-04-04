@@ -11,7 +11,7 @@ import java.util.List;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanTestsWithPath3 extends SpartanTestBase {
+public class SpartanTestsWithPath_3 extends SpartanTestBase {
 
 
 
@@ -27,6 +27,8 @@ public class SpartanTestsWithPath3 extends SpartanTestBase {
           gender is "Female",
           phone is 3312820936
    */
+
+    //                       ****************    .path() Method    ****************  !!!!!!!
     @DisplayName("GET one spartan with Path Method")
     @Test
     public void test1(){
@@ -43,10 +45,10 @@ public class SpartanTestsWithPath3 extends SpartanTestBase {
         System.out.println(response.path("gender").toString());
         System.out.println(response.path("phone").toString());
 
-        int id = response.path("id");
+        int id = response.path("id");   // normalde complain etmesi lazım ama .path() dönüşü "T" olan bir şey sayesinde autocasting gerçekleşiyor.
         String name = response.path("name");
         String gender = response.path("gender");
-        long phone = response.path("phone");
+        long phone = response.path("phone"); // normalde complain etmesi lazım ama .path() dönüşü "T" olan bir şey sayesinde autocasting gerçekleşiyor.
 
         System.out.println("id = " + id);
         System.out.println("name = " + name);

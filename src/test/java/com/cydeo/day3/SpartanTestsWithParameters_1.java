@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanTestsWithParameters1 {
+public class SpartanTestsWithParameters_1 {
 
     @BeforeAll
     public static void init(){

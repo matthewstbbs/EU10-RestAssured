@@ -11,7 +11,7 @@ import java.util.List;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanTestsWithPath extends SpartanTestBase {
+public class SpartanTestsWithPath3 extends SpartanTestBase {
 
 
 

@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanTestsWithParameters_1 {
+public class SpartanTestsWithParameters1 {
 
     @BeforeAll
     public static void init(){
@@ -142,7 +142,7 @@ public class SpartanTestsWithParameters_1 {
         assertEquals(200,response.statusCode());
         //verify content type
         assertEquals("application/json",response.contentType());
-        
+
         //verify
             //"Female" should be in response payload
         assertTrue(response.body().asString().contains("Female"));

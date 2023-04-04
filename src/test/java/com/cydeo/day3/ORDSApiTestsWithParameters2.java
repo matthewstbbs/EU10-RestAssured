@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
-public class ORDSApiTestsWithParameters_2 {
+public class ORDSApiTestsWithParameters2 {
 
     @BeforeAll
     public static void init(){
@@ -44,6 +44,10 @@ public class ORDSApiTestsWithParameters_2 {
       response.prettyPrint();
 
     }
+
+
+
+
     /*
         Send a GET request to employees and get only employees who works as a IT_PROG
 

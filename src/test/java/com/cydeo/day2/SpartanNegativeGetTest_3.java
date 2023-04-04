@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanNegativeGetTest {
+public class SpartanNegativeGetTest_3 {
 
     @BeforeAll
     public static void init(){

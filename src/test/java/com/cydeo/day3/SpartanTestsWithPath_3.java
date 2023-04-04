@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SpartanTestsWithPath_3 extends SpartanTestBase {
-
+//BeforeAll 'ı utilities altında SpartanTestBase içine koydu. ve bu class'ı extends olarak tanımladı.
 
 
     /*

@@ -11,8 +11,8 @@ import java.util.List;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanTestsWithPath_3 extends SpartanTestBase {
-//BeforeAll 'ı utilities altında SpartanTestBase içine koydu. ve bu class'ı extends olarak tanımladı.
+public class SpartanTestsWithPath_3 extends SpartanTestBase { //BeforeAll 'ı utilities altında SpartanTestBase içine koydu. ve bu class'ı extends olarak tanımladı.yukarıda restAssured ve assertions class için Static yapmayı unutma.
+
 
 
     /*
@@ -28,7 +28,7 @@ public class SpartanTestsWithPath_3 extends SpartanTestBase {
           phone is 3312820936
    */
 
-    //                       ****************    .path() Method    ****************  !!!!!!!
+    //            ************  JSON .path() Method ile payload values manipule etmek   <TEK SPARTAN için>  ****  !!!!!!!
     @DisplayName("GET one spartan with Path Method")
     @Test
     public void test1(){
@@ -65,7 +65,7 @@ public class SpartanTestsWithPath_3 extends SpartanTestBase {
     }
 
 
-    //                                                        ***  navigate with Path()          ******************
+    //                                        ***   navigate with JSON Path()    <All spartans> WIH Index#      ******
     @DisplayName("GET all spartan and navigate with Path()")
     @Test
     public void test2(){
@@ -74,10 +74,10 @@ public class SpartanTestsWithPath_3 extends SpartanTestBase {
 
         //response.prettyPrint();
 
-        int firstId = response.path("id[0]");   // index numbers
+        int firstId = response.path("id[0]");               // index numbers
         System.out.println("firstId = " + firstId);
 
-        String name = response.path("name[0]");  // index number
+        String name = response.path("name[0]");               // index number
         System.out.println("name = " + name);
 
         String lastFirstName = response.path("name[-1]");    // index number'ın sondan başlamasına örnek

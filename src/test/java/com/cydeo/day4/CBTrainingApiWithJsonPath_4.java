@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.*;
 
-public class CBTrainingApiWithJsonPath {
+public class CBTrainingApiWithJsonPath_4 {
 
     @BeforeAll
     public static void init(){

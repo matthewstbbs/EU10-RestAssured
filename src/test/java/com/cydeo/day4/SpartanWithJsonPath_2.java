@@ -9,7 +9,7 @@ import org.junit.jupiter.api.*;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanWithJsonPath extends SpartanTestBase {    //https://jsonpathfinder.com/ helps us to find path for  json file
+public class SpartanWithJsonPath_2 extends SpartanTestBase {    //https://jsonpathfinder.com/ helps us to find path for  json file
     /*
         Given accept type is json
         And path param id is 10

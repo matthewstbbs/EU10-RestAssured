@@ -7,7 +7,7 @@ import java.util.*;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
-public class HamcrestMatchersIntro {
+public class HamcrestMatchersIntro_1 {
 
     @DisplayName("Assertion with numbers")
     @Test

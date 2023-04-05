@@ -10,7 +10,7 @@ import java.util.*;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ORDSApiTestWithPath_1 extends HRTestBase {
+public class ORDSApiTestWithPath_1 extends HRTestBase {  //https://jsonpathfinder.com/ helps us to find path for  json file
 
     @DisplayName("GET request to countries with Path method")
     @Test

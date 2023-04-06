@@ -6,8 +6,9 @@ import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.*;
 
-public class HamcrestMatchersApiTest {
+public class HamcrestMatchersApiTest_2 {
     /*
        given accept type is Json
        And path param id is 15
@@ -25,11 +26,11 @@ public class HamcrestMatchersApiTest {
     @Test
     public void test1(){
 
-            given().log().all().
+            given().log().all(). //// burada request bölümünün logunu tutar.
                     accept(ContentType.JSON)
                     .and().pathParam("id",15)
             .when()
-                    .get("http://52.207.61.129:8000/api/spartans/{id}")
+                    .get("http://54.90.80.125:8000/api/spartans/{id}")   //ip adresini kontrol etmeyi unutma. Base page'den gelmedik. dikkat.
             .then()
                     .statusCode(200)
                     .and().assertThat()
@@ -39,7 +40,7 @@ public class HamcrestMatchersApiTest {
        "name",is("Meta"),
                                "gender",is("Female"),
                                "phone",is(1938695106))
-            .log().all();
+            .log().all();  // satır 29'a karşın burada ise response bölümünün logunu tutar. log().all() herşeyi yazdırır. response body'i de yazdırır.
     }
 
     @DisplayName("CBTraining Teacher request with chaining and matchers")
@@ -49,26 +50,28 @@ public class HamcrestMatchersApiTest {
                     given()
                             .accept(ContentType.JSON)
                             .and()
-                            .pathParam("id",10423)
+                            .pathParam("id",3)
                             .and()
 
                     .when()
-                            .get("http://api.cybertektraining.com/teacher/{id}")
+                            .get("https://api.training.cydeo.com/teacher/{id}")
                     .then()
                             .statusCode(200)
                             .and()
                             .contentType("application/json;charset=UTF-8")
-                            .and()
-                            .header("Content-Length",is("236"))
+                            //.and()
+                            //.header("Content-Length",is("236"))     //çalışmadı. API'da null olarak verilmiş.
                             .and()
                             .header("Date",notNullValue())
                             .and().assertThat()
-                            .body("teachers[0].firstName",is("Alexander"))
-                            .body("teachers[0].lastName",is("Syrup"))
-                            .body("teachers[0].gender",equalTo("male"));
+                            .body("teachers[0].firstName",is("Tet"))
+                            .body("teachers[0].lastName",is("DS"))
+                            .body("teachers[0].gender",equalTo("Male"));  //you can keep seperate body() but see above NO NEED.
 
     }
 
+
+    //                                               ****   One with Collectios     ***
     @DisplayName("GET request to teacher/all and chaining")
     @Test
     public void teachersTest(){
@@ -77,11 +80,11 @@ public class HamcrestMatchersApiTest {
         given()
                 .accept(ContentType.JSON)
         .when()
-                .get("http://api.cybertektraining.com/teacher/all")
+                .get("https://api.training.cydeo.com/teacher/all")
         .then()
                 .statusCode(200)
                 .and()
-                .body("teachers.firstName",hasItems("Alexander","Darleen","Sean"));
+                .body("teachers.firstName",hasItems("Valter","Mario","Porter"));
 
 
     }

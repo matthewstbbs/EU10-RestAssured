@@ -10,19 +10,19 @@ public abstract class SpartanTestBase {
     @BeforeAll
     public static void init(){
         //save baseurl inside this variable so that we dont need to type each http method.
-        baseURI = "http://3.216.30.92:8000";
+        baseURI = "http://54.90.80.125:8000";   // eskisi 3.216.30.92
 
-        String dbUrl = "jdbc:oracle:thin:@3.216.30.92:1521:xe";
-        String dbUsername = "SP";
-        String dbPassword = "SP";
+        String dbUrl = "jdbc:oracle:thin:@54.90.80.125:1521:xe";   // eskisi 3.216.30.92
+        String dbUsername = "SP";   //spartan API için
+        String dbPassword = "SP";   //spartan API için
 
-        //DBUtils.createConnection(dbUrl,dbUsername,dbPassword);
+        DBUtils.createConnection(dbUrl,dbUsername,dbPassword);
     }
 
     @AfterAll
     public static void teardown(){
 
-        //DBUtils.destroy();
+        DBUtils.destroy();
     }
 
 

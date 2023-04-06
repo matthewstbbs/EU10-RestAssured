@@ -134,7 +134,7 @@ public class SpartanTestsWithParameters_1 {
         Response response = given().
                                     log().all()
                                     .accept(ContentType.JSON)
-                                    .and().queryParams(queryMap)
+                                    .and().queryParams(queryMap)  // queryParamS -- yani çoğul parametre var.
                             .when()
                                     .get("/api/spartans/search");
 

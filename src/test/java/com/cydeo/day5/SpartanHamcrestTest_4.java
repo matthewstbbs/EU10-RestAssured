@@ -9,7 +9,7 @@ import java.util.*;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-public class SpartanHamcrestTest extends SpartanTestBase {
+public class SpartanHamcrestTest_4 extends SpartanTestBase {
 
     @DisplayName("GET spartan/search and chaining together")
     @Test
@@ -19,7 +19,7 @@ public class SpartanHamcrestTest extends SpartanTestBase {
 
          List<String> names = given().accept(ContentType.JSON)
                                 .and()
-                                .queryParams("nameContains","j",
+                                .queryParams("nameContains","j",  // *** quersyParamS ile chaining yapılır. key-value, key-value yazabilirsin. daha önce Map(day3, birinci örenk satır129) ile de koymuştuk.
                                                     "gender","Male")
                         .when()
                                 .get("/api/spartans/search")
@@ -27,7 +27,7 @@ public class SpartanHamcrestTest extends SpartanTestBase {
                                 .statusCode(200)
                                 .and()
                                 .body("totalElement",greaterThanOrEqualTo(3))
-                                .extract().response().jsonPath().getList("content.name");
+                                .extract().response().jsonPath().getList("content.name");  // extract metod'un çıktısını List olarak verecek. satır 20'de atama yapıldı.
 
         System.out.println(names);
 

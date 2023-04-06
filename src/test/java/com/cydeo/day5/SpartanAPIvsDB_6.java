@@ -11,7 +11,14 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
-public class SpartanAPIvsDB extends SpartanTestBase {
+public class SpartanAPIvsDB_6 extends SpartanTestBase {  //video 3:14:30
+
+     /*  hazırlık olarak
+     1.pom.xml'e oracle dependency eklemeyi unutma.
+     2.DBUtils oluştur/kopyala. createConnection(Param) custom method ile JDBC connection sağla.
+     3. config.properties'e IP, Username, PWyi ekle.(bu örnekte base classlarda verdik.)
+
+     */
 
     @DisplayName("GET one spartan from api and database")
     @Test
@@ -24,7 +31,7 @@ public class SpartanAPIvsDB extends SpartanTestBase {
         String query = "select spartan_id,name,gender,phone from spartans\n" +
                 "where spartan_id = 15";
 
-        //save data inside the map
+            //save data inside the map
         Map<String, Object> dbMap = DBUtils.getRowMap(query);
         System.out.println(dbMap);
 
@@ -38,15 +45,15 @@ public class SpartanAPIvsDB extends SpartanTestBase {
                 .and().contentType("application/json")
                 .extract().response();
 
-        //Deserialization here JSon to Java  with Jackson objectMapper
+            //Deserialization here JSon to Java  with Jackson objectMapper
         Map<String,Object> apiMap= response.as(Map.class);
         System.out.println(apiMap);
 
         //3.compare database vs api --> we assume expected result is db
-        assertThat(apiMap.get("id").toString(),is(dbMap.get("SPARTAN_ID").toString()));
+        assertThat(apiMap.get("id").toString(),is(dbMap.get("SPARTAN_ID").toString()));  //toString() kullanarak geçti.
         assertThat(apiMap.get("name"),is(dbMap.get("NAME")));
         assertThat(apiMap.get("gender"),is(dbMap.get("GENDER")));
-        assertThat(apiMap.get("phone").toString(),is(dbMap.get("PHONE").toString()));
+        assertThat(apiMap.get("phone").toString(),is(dbMap.get("PHONE").toString()));  //toString() kullanarak geçti.
 
     }
 

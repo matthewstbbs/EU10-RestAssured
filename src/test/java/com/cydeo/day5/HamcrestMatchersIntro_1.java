@@ -4,24 +4,26 @@ import org.junit.jupiter.api.*;
 
 import java.util.*;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.*; //satır 17'nin başında idi ama static import yapıp bir daha class içinde yazmayacak.
+import static org.hamcrest.Matchers.*; //satır 18'de "is" in önündeydi. ama static import yapıp bir daha class içinde yazmayacak.
 
-public class HamcrestMatchersIntro_1 {
+public class HamcrestMatchersIntro_1 {    // restAssured dependency'nin içinde var. ayrıca birşey eklemeye gerek yok. metodlar için link: https://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html
 
-    @DisplayName("Assertion with numbers")
+    @DisplayName("assertThat with numbers")
     @Test
     public void simpleTest1(){
 
         //actual 5+5
         assertThat(5+5, is(10));
         assertThat(5+5,equalTo(10));
+
         //matchers has 2 overloaded version
-        //first that accept actual value
-        //second taht accept another matchers
-        //below examples is method is accepting another matchers equal to make it readable
+            //first that accept actual value
+            //second that accept another matchers
+            //below examples is method is accepting another matchers equal to make it readable
         assertThat(5+5,is(equalTo(10)));
 
+        //negative
         assertThat(5+5,not(9));
         assertThat(5+5,is(not(9)));
         assertThat(5+5,is(not(equalTo(9))));
@@ -34,7 +36,7 @@ public class HamcrestMatchersIntro_1 {
         assertThat(5+5,is(greaterThan(9)));
     }
 
-    @DisplayName("Assertion with String")
+    @DisplayName("assertThat with String")
     @Test
     public void stringHamcrest(){
 
@@ -76,7 +78,7 @@ public class HamcrestMatchersIntro_1 {
         //check if this list hasItem 77
         assertThat(listOfNumbers,hasItem(77));
         //check if this list hasItems 77,54,23
-        assertThat(listOfNumbers,hasItems(77,54,23));
+        assertThat(listOfNumbers,hasItems(77,54,23));    // hasItems-->collections'larda(array veren response) kullanılabilir.
 
         //check if all numbers greater than 0
         assertThat(listOfNumbers,everyItem(greaterThan(0)));

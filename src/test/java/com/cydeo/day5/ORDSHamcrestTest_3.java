@@ -11,9 +11,9 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
-public class ORDSHamcrestTest extends HRTestBase {
+public class ORDSHamcrestTest_3 extends HRTestBase {
 
-
+// Collection   hamCrest.Matcher uygulamasına güzel örnek.
 
     @DisplayName("GET request to Employees IT_PROG endpoint and chaining")
     @Test
@@ -23,7 +23,8 @@ public class ORDSHamcrestTest extends HRTestBase {
         //verify first names are .... (find proper method to check list against list)
         //verify emails without checking order (provide emails in different order,just make sure it has same emails)
         //expected names
-        List<String> names =Arrays.asList("Alexander","Bruce","David","Valli","Diana");
+
+        List<String> names =Arrays.asList("Alexander","Bruce","David","Valli","Diana"); //hazırlıyoruz ki verify first names are . (find proper method to check list against list)
 
         given().accept(ContentType.JSON)
                 .and().queryParam("q","{\"job_id\": \"IT_PROG\"}")
@@ -32,7 +33,7 @@ public class ORDSHamcrestTest extends HRTestBase {
         .then()
                 .statusCode(200)
                 .body("items.job_id",everyItem(equalTo("IT_PROG")))
-                .body("items.first_name",containsInRelativeOrder("Alexander","Bruce","David","Valli","Diana")) //contains with order
+                .body("items.first_name",containsInRelativeOrder("Alexander","Bruce","David","Valli","Diana")) //contains with order. ancak burada birisini çıkardığında hala testten geçiyor.
                 .body("items.email",containsInAnyOrder("VPATABAL","DAUSTIN","BERNST","AHUNOLD","DLORENTZ")) //contains without order
                 .body("items.first_name", equalTo(names)); // equality of lists assertion
 
@@ -43,6 +44,10 @@ public class ORDSHamcrestTest extends HRTestBase {
     public void employeesTest2(){
         //we want to chain and also get response object
 
+        //Aşağıdaki ikisi ilk yaptığımız GPath tarzıydı.
+        // Response response =  given().accept(ContentType.JSON)..blabla bla.....extract().response();
+        //response.prettyPrint();
+
 
         JsonPath jsonPath = given().accept(ContentType.JSON)
                 .and().queryParam("q", "{\"job_id\": \"IT_PROG\"}")
@@ -52,7 +57,12 @@ public class ORDSHamcrestTest extends HRTestBase {
                 .statusCode(200)
                 .body("items.job_id", everyItem(equalTo("IT_PROG")))
                 .extract().jsonPath();
-        //extract() --> method that allow us to get response object after we use then() method.
+
+
+
+        //extract() --> method that allow us to get response object after we use then() method.   !!!!!!!
+
+
         //assert that we have only 5 firstnames
         assertThat(jsonPath.getList("items.first_name"),hasSize(5));
 
